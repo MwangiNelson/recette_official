@@ -27,13 +27,13 @@ const Recipes = () => {
     data.timeStamp = new Date().toLocaleString();
   };
 
-  // const inPrefs = (pref) => {
-  //   if (preference.indexOf(pref) === -1) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // };
+  const inPrefs = (pref) => {
+    if (preference.indexOf(pref) === -1) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   const clearForm = () => {
     setName([]);
