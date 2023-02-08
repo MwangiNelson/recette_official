@@ -1,0 +1,22 @@
+.form-wrapper {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+}
+.form-head {
+  width: 100%;
+  font-family: var(--secondary-font);
+  font-size: 2em;
+  color: var(--primary-grey);
+  margin-bottom: 0.75em;
+}
+
+.form-container {
+  width: 100%;
+  padding: 1em;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}

@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useRef } from 'react'
-const Tests = () => {
-    let [val,setVal] = useState(0)
+import React from 'react'
+import { LoginForm } from '../home/login'
 
+const Tests = () => {
     return (
         <div>
-           
+            <LoginForm />
         </div>
     )
 }
