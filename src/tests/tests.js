@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react'
-import LoginPage from '../home/login'
+import { LoginForm } from '../home/login'
 const Tests = () => {
     let [val, setVal] = useState(0)
 
     return (
         <div>
-            <LoginPage />
+            <LoginForm />
         </div>
     )
 }
