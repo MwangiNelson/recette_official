@@ -6,8 +6,8 @@ import { collection, query, onSnapshot } from "firebase/firestore";
 
 const AllRecipes = () => {
   const [recettes, setRecettes] = useState([])
-  const [displayItems, setDisplayItems] = useState([])
-  const [filterValue, setFilterValue] = useState('')
+  const [queryText, setQuery] = useState("")
+  const filteredItems = recettes.filter(item => { return item.title.toLowerCase().replace(" ", "").includes(queryText.toLowerCase().replace(" ", "")) })
   const [selectedRecipes, setSelectedRecipes] = useState([])
   const [renderTrigger, setRenderTrigger] = useState(false)
 
@@ -20,31 +20,10 @@ const AllRecipes = () => {
       })
 
       setRecettes(recipesArr)
-      setDisplayItems(recipesArr)
     })
-
-    // let names = recettes.filter(rec => rec.title.toLowerCase().includes("deez"))
-    // console.log(names)
   }, [])
 
-  const handleFilter = (e) => {
-    setFilterValue(e.target.value)
 
-    if (e.target.value === '') {
-      setDisplayItems(recettes)
-    } else {
-      let filterResult = recettes.filter(item => item.title.toLowerCase().replace(" ", "").includes(e.target.value.toLowerCase().replace(" ", "")))
-      setDisplayItems(filterResult)
-    }
-  }
-
-  useEffect(() => {
-    if (selectedRecipes.length > 0) {
-      console.log(selectedRecipes)
-    } else {
-      console.log(typeof selectedRecipes)
-    }
-  }, [selectedRecipes])
   return (
     <section className="all-recipes">
       {(!(selectedRecipes.length === 0)) ? <DetailedRecipe procedure={selectedRecipes.procedure} title={selectedRecipes.title} author={selectedRecipes.author} ingredients={selectedRecipes.ingredients} clickMethod={() => { setSelectedRecipes([]) }} /> : null}
@@ -54,7 +33,7 @@ const AllRecipes = () => {
       <div className={((selectedRecipes.length === 0)) ? "recipes-body-section" : "invisible"}>
         <div className="search-bar-container">
           <div className="search-bar">
-            <input type="text" value={filterValue} className='input-field' onChange={(e) => { handleFilter(e) }} />
+            <input type="search" value={queryText} className='input-field' onChange={(e) => { setQuery(e.target.value) }} />
             <i class="fa-solid fa-magnifying-glass"></i>
           </div>
           <div className="filter-container">
@@ -63,7 +42,7 @@ const AllRecipes = () => {
         </div>
         <div className="all-recipes-container">
           <div className="recipe-cards-container">
-            {(displayItems.length == 0) ? <NoItemFound /> : displayItems.map((item, index) => { return (<RecipeCards title={item.title} author={item.author} id={item.id} clickMethod={() => { setSelectedRecipes(item) }} />) })}
+            {(filteredItems.length == 0) ? <NoItemFound /> : filteredItems.map((item, index) => { return (<RecipeCards title={item.title} author={item.author} id={item.id} preferences={item.preferences} clickMethod={() => { setSelectedRecipes(item) }} />) })}
           </div>
         </div>
       </div>

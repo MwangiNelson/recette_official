@@ -1,5 +1,6 @@
 import "./components.css";
 import { Link } from "react-router-dom";
+import { Diets } from "../recipes/diets";
 
 export const DietCards = (props) => {
     return (
@@ -15,6 +16,7 @@ export const DietCards = (props) => {
                     <i className="fa-solid fa-trash-can"></i>
                 )}
             </button>
+
             <img className="diet-image" src={props.image} alt="" />
             <h3>{props.name}</h3>
         </div>
@@ -59,7 +61,13 @@ export const RecipeCards = (props) => {
                     <h2>{props.title.toUpperCase()}</h2>
                 </div>
                 <div className="card-preferences">
-                    <img src='https://cdn-icons-png.flaticon.com/512/4491/4491013.png' alt="" className="preference-img" />
+                    <p>{props.preferences}</p>
+                    {props.preferences.map((pref,index) => {
+                        let diet = Diets.filter(item => item.name == pref)
+                        return (
+                            <img src={diet.image} alt="" className="preference-img" />
+                        )
+                    })}
                 </div>
                 <div className="card-contents">
                     <div className="card-rating">

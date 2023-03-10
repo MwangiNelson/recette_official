@@ -17,7 +17,7 @@ const Recipes = () => {
   const [name, setName] = useState([]);
   const [title, setTitle] = useState("");
   const [procedure, setProcedure] = useState("");
-  var data = useRef({});
+  let data = useRef({});
 
   const collectData = () => {
     data.name = name;
@@ -25,15 +25,9 @@ const Recipes = () => {
     data.ingredients = ingredientsList;
     data.procedure = procedure;
     data.timeStamp = new Date().toLocaleString();
+    data.preference = preference;
   };
 
-  const inPrefs = (pref) => {
-    if (preference.indexOf(pref) === -1) {
-      return true;
-    } else {
-      return false;
-    }
-  };
 
   const clearForm = () => {
     setName([]);
@@ -41,14 +35,19 @@ const Recipes = () => {
     setProcedure("");
     updateIngredientsList([]);
     setNewIngredient([]);
+    setPreference([])
   };
   const storeData = async () => {
+
+    collectData()
+
     await addDoc(collection(db, "recipes"), {
       author: data.name,
       procedure: data.procedure.replace("/\n/gm", "."),
       ingredients: data.ingredients,
       title: data.title,
       creationTime: data.timeStamp,
+      preferences:data.preference
     });
 
     toast.success("Recipe created successfully", {
@@ -76,12 +75,17 @@ const Recipes = () => {
       clearForm();
     }
   };
-  useEffect(() => {
-    collectData();
-  });
 
   function deleteItem(id) {
     updateIngredientsList(ingredientsList.filter((item, i) => i !== id));
+  }
+
+  function getCardMode(cardName) {
+    if (preference.indexOf(cardName) == -1) {
+      return { card_name: "diet-card-normal", button_name: "button-normal" }
+    } else {
+      return { card_name: "diet-card-selected", button_name: "button-selected" }
+    }
   }
 
   return (
@@ -207,15 +211,22 @@ const Recipes = () => {
                   </div>
                   <div className="diets-container">
                     {Diets.map((item, index) => {
+                      let Modes = getCardMode(item.name);
                       return (
                         <DietCards
                           id={index}
-                          cardMode={"diet-card-normal"}
-                          buttonMode={"button-normal"}
+                          cardMode={Modes.card_name}
+                          buttonMode={Modes.button_name}
                           image={item.image}
                           name={item.name}
                           method={() => {
-                            setPreference([...preference, item.name]);
+
+                            if (preference.indexOf(item.name) == -1) {
+                              setPreference(prefs => { return [...prefs, item.name] })
+                            } else {
+                              let newPrefs = preference.filter(items => items != item.name)
+                              setPreference(newPrefs)
+                            }
                           }}
                         />
                       );
