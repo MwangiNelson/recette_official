@@ -47,7 +47,7 @@ const Recipes = () => {
       ingredients: data.ingredients,
       title: data.title,
       creationTime: data.timeStamp,
-      preferences:data.preference
+      preferences: data.preference
     });
 
     toast.success("Recipe created successfully", {
@@ -143,6 +143,7 @@ const Recipes = () => {
               <div className="input-field-container">
                 <div className="ingredients-input">
                   <input
+                    id="ingredient-input"
                     type="text"
                     className="input-field"
                     onChange={(e) => {
@@ -153,10 +154,14 @@ const Recipes = () => {
                     className="btn btn-add"
                     type="button"
                     onClick={() => {
+
                       updateIngredientsList([
                         ...ingredientsList,
                         newIngredient,
                       ]);
+
+                      let input_f = document.getElementById('ingredient-input')
+                      input_f.value = ''
                     }}
                   >
                     ADD
