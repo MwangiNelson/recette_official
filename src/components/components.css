@@ -175,7 +175,7 @@
 }
 
 .recipe-card {
-  height: 25vh;
+  height: 30vh;
   background: var(--primary-yellow);
   width: 100%;
   border-radius: 5px;
@@ -203,6 +203,8 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  margin: 0.75em;
+  gap: 1em;
 }
 .card-preferences img {
   width: 100%;
@@ -357,14 +359,14 @@
     transition: all 1s ease;
     border-left: 1px solid var(--primary-dark-blue);
   }
-  .empty-card{
+  .empty-card {
     width: 75%;
   }
-  .empty-card h4{
+  .empty-card h4 {
     display: flex;
     flex-direction: column;
   }
-  .empty-card h4 a{
+  .empty-card h4 a {
     width: fit-content;
   }
   .menu-bar {

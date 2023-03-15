@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./recipe.css";
 import { Link } from "react-router-dom";
-import { db } from "../firebase";
-import { Diets } from "./diets";
-import { DietCards } from "../components/cards";
+import { db } from "../../firebase";
+import { Diets } from "../../assets/diets";
+import { DietCards } from "../../components/cards";
 import { collection, addDoc } from "firebase/firestore";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -25,7 +25,6 @@ const Recipes = () => {
     data.ingredients = ingredientsList;
     data.procedure = procedure;
     data.timeStamp = new Date().toLocaleString();
-    data.preference = preference;
   };
 
 
@@ -41,13 +40,13 @@ const Recipes = () => {
 
     collectData()
 
-    await addDoc(collection(db, "recipes"), {
+    await addDoc(collection(db, "recettes"), {
       author: data.name,
       procedure: data.procedure.replace("/\n/gm", "."),
       ingredients: data.ingredients,
       title: data.title,
       creationTime: data.timeStamp,
-      preferences: data.preference
+      preferences: preference
     });
 
     toast.success("Recipe created successfully", {
@@ -59,7 +58,7 @@ const Recipes = () => {
     e.preventDefault(e);
     const validated = (obj) => {
       for (let i in obj) {
-        if (obj[i] === "" || obj[i].length === 0) {
+        if (obj[i] === "" || obj[i].length == 0) {
           toast.warn(`Please fill in the ${i} fields`, {
             position: "top-center",
             autoClose: 4000,
