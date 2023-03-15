@@ -1,6 +1,6 @@
 import "./components.css";
 import { Link } from "react-router-dom";
-import { Diets } from "../recipes/diets";
+import { Diets } from "../assets/diets";
 
 export const DietCards = (props) => {
     return (
@@ -61,11 +61,11 @@ export const RecipeCards = (props) => {
                     <h2>{props.title.toUpperCase()}</h2>
                 </div>
                 <div className="card-preferences">
-                    <p>{props.preferences}</p>
                     {props.preferences.map((pref,index) => {
-                        let diet = Diets.filter(item => item.name == pref)
+                        let diet = Diets.filter(item => item.name === pref)
+                        console.log(diet[0].image)
                         return (
-                            <img src={diet.image} alt="" className="preference-img" />
+                            <img key={index} src ={diet[0].image} alt="" className="preference-img" data-name={diet.name} />
                         )
                     })}
                 </div>
@@ -86,7 +86,7 @@ export const RecipeCards = (props) => {
 export const NoItemFound = () => {
     return (
         <div className="empty-card">
-            <h4>No such item was found in our database. <Link to="/recipes" className="add-link">Wanna add it? <i class="fa-regular fa-map" style={{ marginLeft: "5px" }}></i></Link></h4>
+            <h4>No such item was found in our database. <Link to="/recipes" className="add-link">Wanna add it? <i className="fa-regular fa-map" style={{ marginLeft: "5px" }}></i></Link></h4>
         </div>
     )
 }

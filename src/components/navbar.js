@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import Home from "../home/home";
-import Recipes from "../recipes/recipes";
-import AllRecipes from "../recipes/allRecipes";
+import Recipes from "../recipes/add_recipes/recipes";
+import AllRecipes from "../recipes/all_recipes/allRecipes";
 import Tests from "../tests/tests";
 
 export const NavigationRoutes = () => {
@@ -42,7 +42,7 @@ export const Navbar = (props) => {
       </ul>
       <div className="menu-bar">
         <button className="menu-btn" onClick={props.clickFunction}>
-          <i class="fa-solid fa-bars"></i>
+          <i className="fa-solid fa-bars"></i>
         </button>
       </div>
     </nav>
@@ -58,7 +58,7 @@ export const SideNav = (props) => {
       <div className="links-list">
         {props.links.map((item, index) => {
           return (
-            <Link to={item.url} onClick={props.clickFunction}>
+            <Link key={index} to={item.url} onClick={props.clickFunction}>
               {item.name}
             </Link>
           );
