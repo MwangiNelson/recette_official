@@ -5,7 +5,7 @@ const Tests = () => {
 
     return (
         <div>
-            <LoginForm />
+            {/* <LoginForm /> */}
         </div>
     )
 }
