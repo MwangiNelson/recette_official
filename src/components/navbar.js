@@ -30,16 +30,16 @@ export const Navbar = (props) => {
             <i className="fa-solid fa-magnifying-glass"></i> FIND RECIPES
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/tests">TEST SITE</Link>
-        </li>
+        </li> */}
         <li>
           <Link to="recipes">POST RECIPE</Link>
         </li>
-        <li>
-          <Link to="/">CREATE ACCOUNT</Link>
-        </li>
       </ul>
+      <div className="auth-div">
+        <button className="btn" onClick={props.loginViewMethod}>LOG IN</button>
+      </div>
       <div className="menu-bar">
         <button className="menu-btn" onClick={props.clickFunction}>
           <i className="fa-solid fa-bars"></i>

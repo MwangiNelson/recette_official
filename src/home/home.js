@@ -1,10 +1,11 @@
-import React, {useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // import { db } from '../firebase'
 // import { query, collection, onSnapshot, addDoc } from 'firebase/firestore'
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { DisplayCard } from "../components/cards";
+import { LoginForm } from "./login";
 import "./home.css";
 
 function Home() {
@@ -22,11 +23,13 @@ function Home() {
     return;
   }
 
+  
 
   return (
     <section className='home'>
       <div className="main-body">
         <ToastContainer />
+
 
         <section className="hero-section">
           <div className="hero-text-container">
