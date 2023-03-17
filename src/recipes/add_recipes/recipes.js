@@ -208,7 +208,7 @@ const Recipes = () => {
                   <i className="fa-solid fa-angles-down"></i>
                 </button>
               </div>
-              <div className={visibility ? "optionals" : "invisible"}>
+              <div className="optionals" hidden={visibility}>
                 <div className="form-input">
                   <div className="label-holder">
                     <label htmlFor="">Preferences:</label>

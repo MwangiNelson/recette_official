@@ -12,8 +12,8 @@ export const LoginForm = (props) => {
         console.log(loginPass.current.value)
     }
     return (
-        <div className="login-form-wrapper">
-            <div className="login-form-container">
+        <div className="login-form-wrapper" onClick={props.visibility}>
+            <div className="login-form-container" onClick={(e) => { e.stopPropagation() }} >
                 <div className="form-head">
                     <h1>SIGN IN</h1>
                     <button className="btn-close-tab" onClick={props.visibility} ><i className="fa-solid fa-xmark"></i></button>
