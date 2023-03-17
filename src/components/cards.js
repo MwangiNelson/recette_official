@@ -14,7 +14,7 @@ export const DietCards = (props) => {
                 {props.buttonMode === "button-normal" ? (
                     "ADD"
                 ) : (
-                    <i className="fa-solid fa-trash-can"></i>
+                    <><i className="fa-solid fa-trash-can"></i> DELETE</>
                 )}
             </button>
 

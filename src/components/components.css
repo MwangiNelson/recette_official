@@ -24,13 +24,13 @@
 }
 .btn-diet {
   border-radius: 4px;
-  padding: 0.25em 0.95em;
+  padding: 0.35em 0rem;
+  width: 50%;
   font-size: 0.7em;
   background-color: transparent;
-  transition: transform 0.5s ease;
+  transition: all 0.35s ease;
 }
 .btn-diet:hover {
-  transform: scale(1.1);
   color: var(--primary-white);
 }
 .button-normal {
@@ -41,11 +41,14 @@
   background-color: var(--primary-green);
 }
 .button-selected {
-  background-color: var(--primary-red);
+  background-color: transparent;
   color: var(--primary-red);
+  border: 1px solid var(--primary-red);
+  outline: none;
 }
 .button-selected:hover {
   background-color: var(--primary-red);
+  color: var(--primary-white);
 }
 .diet-image {
   width: 5em;
@@ -56,15 +59,8 @@
   width: 100%;
   display: grid;
   padding-block: 1em;
-  grid-template-columns: repeat(auto-fit, minmax(7vw, 9vw));
-  /* display: flex;
-  flex-direction: row; */
-  /* flex-wrap: wrap; */
+  grid-template-columns: repeat(auto-fit, minmax(7vw, 10vw));
   justify-content: space-between;
-}
-
-.invisible {
-  display: none !important;
 }
 
 .links-list {
@@ -258,7 +254,7 @@
   position: absolute;
   top: 0;
   right: 10%;
-  padding: .15em .5em;
+  padding: 0.15em 0.5em;
   border-radius: 0px 0px 4px 4px;
 }
 .card-contents {
@@ -501,6 +497,18 @@
   .ingredient-span {
     box-shadow: var(--primary-shadow);
   }
+  .diets-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+  }
+  .diet-card {
+    width: 90% !important;
+    transition: all 0.5s ease;
+  }
+  .diet-image {
+    width: 15vw;
+  }
 }
 .sample-card {
   background-color: var(--primary-yellow);
@@ -510,4 +518,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, 50%);
+}
+.optionals {
+  transition: all 0.5s ease;
 }
