@@ -1,6 +1,7 @@
 import "./components.css";
 import { Link } from "react-router-dom";
 import { Diets } from "../assets/diets";
+import { useState } from "react";
 
 export const DietCards = (props) => {
     return (
@@ -53,21 +54,37 @@ export const DisplayCard = () => {
 
 
 export const RecipeCards = (props) => {
+    const [ctgIndex, setctgIndex] = useState(-1);
+    function getPreferences(preference) {
+        if (Object.keys(preference).length == 0) {
+            return (<img src="https://cdn-icons-png.flaticon.com/512/3654/3654897.png" className="preference-img" />)
+        }
+
+        return preference.map((pref, index) => {
+            let diet = Diets.filter(item => item.name == pref)
+            console.log(diet[0].image)
+            return (<div className="preference">
+                <span className="pref-desc" hidden={(ctgIndex == index) ? false : true}>{diet[0].name}</span>
+                <img key={index} src={diet[0].image} alt="" className="preference-img" onMouseOver={() => { setctgIndex(index) }} onMouseLeave={() => { setctgIndex(-1) }} />
+            </div>
+            )
+        })
+    }
+
 
     return (
         <div className="recipe-card">
+            <div className="special-card">
+                W.
+            </div>
             <div className="contents-wrapper">
                 <div className="card-title">
-                    <h2>{props.title.toUpperCase()}</h2>
+                    <h2>{props.title.toLowerCase()}</h2>
                 </div>
                 <div className="card-preferences">
-                    {props.preferences.map((pref,index) => {
-                        let diet = Diets.filter(item => item.name === pref)
-                        console.log(diet[0].image)
-                        return (
-                            <img key={index} src ={diet[0].image} alt="" className="preference-img" data-name={diet.name} />
-                        )
-                    })}
+                    {
+                        getPreferences(props.preferences)
+                    }
                 </div>
                 <div className="card-contents">
                     <div className="card-rating">
