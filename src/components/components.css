@@ -175,29 +175,44 @@
 }
 
 .recipe-card {
-  height: 30vh;
-  background: var(--primary-yellow);
+  height: 25vh;
+  background: var(--primary-grey);
   width: 100%;
-  border-radius: 5px;
+  border-radius: 15px;
   box-shadow: var(--primary-shadow);
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   justify-items: center;
   box-shadow: var(--primary-shadow);
+  position: relative;
 }
 .contents-wrapper {
   width: 90%;
   height: 90%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   align-self: center;
+  position: relative;
 }
 .card-title {
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding-top: 0.75em;
+}
+.card-title h2 {
+  text-transform: capitalize;
+  font-weight: lighter;
+}
+.card-title::after {
+  content: "";
+  height: 2px;
+  background-color: var(--primary-dark-blue);
+  width: 100%;
+  border-radius: 5px;
+  position: relative;
 }
 .card-preferences {
   width: 100%;
@@ -210,11 +225,56 @@
   width: 100%;
   object-fit: contain;
 }
+.preference {
+  display: flex;
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+}
+.pref-desc {
+  background-color: var(--primary-dark-blue);
+  border-radius: 2px;
+  color: var(--primary-white);
+  position: absolute;
+  top: -75%;
+  left: 50%;
+  font-size: 0.75em;
+  padding: 0.15em 0.25em;
+}
+.desc-span {
+  background-color: var(--primary-dark-blue);
+  color: var(--primary-white);
+  font-size: 0.5em;
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.special-card {
+  background-color: var(--primary-purple);
+  color: var(--primary-white);
+  font-family: var(--secondary-font);
+  font-size: 1.5em;
+  position: absolute;
+  top: 0;
+  right: 10%;
+  padding: .15em .5em;
+  border-radius: 0px 0px 4px 4px;
+}
 .card-contents {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
+}
+.card-rating {
+  display: flex;
+  flex-direction: column;
+}
+.card-rating p {
+  font-style: italic;
+  font-weight: lighter;
+  font-size: 0.75em;
 }
 .card-btn button {
   width: 100%;
@@ -223,7 +283,7 @@
   color: var(--primary-purple);
   border-radius: 5px;
   transition: all 0.5s ease;
-  padding: 0.75em 0.5em;
+  padding: 0.5em 0.5em;
   text-transform: uppercase;
   text-align: center;
 }
