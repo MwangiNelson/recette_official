@@ -26,6 +26,7 @@ function App() {
         clickFunction={() => {
           setOpenSideNav(!openSideNav);
         }}
+        loginViewMethod={toggleLoginView}
       />
       {toggleView && <LoginForm visibility={toggleLoginView} />}
       <NavigationRoutes />

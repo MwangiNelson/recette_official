@@ -66,6 +66,18 @@
   align-items: center;
   justify-content: center;
 }
+.mobile-auth-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.mobile-auth-div button {
+  color: var(--primary-dark-blue);
+  width: 75%;
+  padding: 0.25em 0em;
+  font-size: 2em;
+  font-family: var(--secondary-font);
+}
 .auth-div button {
   width: 50%;
 }
@@ -367,6 +379,9 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .auth-div {
+    display: none;
+  }
   .home-nav-bar {
     display: grid;
     grid-template-columns: 1fr 1fr;

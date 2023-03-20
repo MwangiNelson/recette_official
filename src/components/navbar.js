@@ -64,6 +64,9 @@ export const SideNav = (props) => {
           );
         })}
       </div>
+      <div className="mobile-auth-div">
+        <button className="btn" onClick={props.loginViewMethod}>LOG IN</button>
+      </div>
     </div>
   );
 };

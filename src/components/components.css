@@ -175,7 +175,7 @@
 }
 
 .recipe-card {
-  height: 25vh;
+  height: fit-content;
   background: var(--primary-grey);
   width: 100%;
   border-radius: 15px;
@@ -219,7 +219,7 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   margin: 0.75em;
-  gap: 1em;
+  column-gap: 0.5em;
 }
 .card-preferences img {
   width: 100%;
@@ -258,7 +258,7 @@
   position: absolute;
   top: 0;
   right: 10%;
-  padding: .15em .5em;
+  padding: 0.15em 0.5em;
   border-radius: 0px 0px 4px 4px;
 }
 .card-contents {
@@ -266,6 +266,8 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
+  height: fit-content;
+  padding-block: 1em;
 }
 .card-rating {
   display: flex;
@@ -419,6 +421,7 @@
     transition: all 1s ease;
     border-left: 1px solid var(--primary-dark-blue);
   }
+
   .empty-card {
     width: 75%;
   }
