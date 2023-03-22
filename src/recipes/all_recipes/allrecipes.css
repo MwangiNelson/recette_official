@@ -1,5 +1,4 @@
- 
- .all-recipes {
+.all-recipes {
   width: 80%;
   display: flex;
   flex-direction: row;
@@ -9,8 +8,14 @@
 .filter {
   width: 20%;
 }
+.recipes-display {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
 .recipes-body-section {
-  width: 80%;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 1em;
@@ -70,6 +75,9 @@
     align-items: center;
   }
   .recipes-body-section {
+    width: 100%;
+  }
+  .wrapper {
     width: 100%;
   }
   .search-bar-container {

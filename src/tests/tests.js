@@ -1,7 +1,26 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { LoginForm } from '../home/login'
+import { collection,query } from 'firebase/firestore'
+import { db } from '../firebase'
+
+
+
 const Tests = () => {
-    let [val, setVal] = useState(0)
+
+    function updateData (){
+        const f_db =  query(collection(db, 'recipes'));
+        f_db.get().then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+              doc.ref.update({
+                preferences: []
+              });
+            });
+          });
+    }
+
+    useEffect(()=>{
+        updateData()
+    },[])
+
 
     return (
         <div>

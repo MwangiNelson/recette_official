@@ -316,33 +316,60 @@
 
 .full-recipe {
   background-color: var(--primary-orange);
-  width: 50%;
-  position: fixed;
-  bottom: 50%;
-  right: 50%;
-  transform: translateY(50%) translateX(50%);
-  padding: 1em;
+  width: 100%;
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 1em;
-  border: 1px solid var(--primary-dark-blue);
+  border: none;
   z-index: 99;
 }
+.recipe-jargon {
+  width: 95%;
+  margin-left: 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.recipe-jargon h3 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.recipe-jargon h3::before {
+  width: 100px;
+  height: 2px;
+  background-color: var(--primary-dark-blue);
+}
+
 .wrapper {
   background-color: transparent;
   backdrop-filter: blur(3px);
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
+  width: 85%;
+  height: 100%;
+  position: relative;
 }
 .close-details {
+  position: relative;
   display: flex;
   width: 100%;
-  flex-direction: row-reverse;
-  padding: 0;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 1em;
   margin: 0;
+}
+.header-span {
+  position: absolute;
+  left: 0%;
+  bottom: 0;
+  height: 100%;
+  width: 75%;
+  z-index: -1;
+  background-color: var(--primary-grey);
+}
+.close-details h3 {
+  width: 75%;
 }
 .btn-close-tab {
   display: flex;
@@ -365,14 +392,16 @@
   margin: 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  padding-inline-start: 0.5em;
 }
-.title::after {
+/* .title::after {
   content: "";
   background-color: var(--primary-dark-blue);
   height: 2px;
   width: 100%;
   position: relative;
-}
+} */
 .ingredient-span {
   width: 90%;
   background-color: var(--primary-golden);
@@ -416,6 +445,13 @@
     align-items: center;
     transition: all 1s ease;
     border-left: 1px solid var(--primary-dark-blue);
+  }
+  .wrapper {
+    width: 100%;
+  }
+  .full-recipe {
+    width: 100%;
+    padding: 0;
   }
 
   .empty-card {
@@ -482,10 +518,8 @@
     gap: 0.75em;
   }
   .full-recipe {
-    width: 90%;
-    border: none;
     bottom: 0;
-    top: 10%;
+    top: 0%;
     right: 0;
     transform: none;
     justify-self: center;
