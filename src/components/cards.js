@@ -14,7 +14,7 @@ export const DietCards = (props) => {
                 {props.buttonMode === "button-normal" ? (
                     "ADD"
                 ) : (
-                    <i className="fa-solid fa-trash-can"></i>
+                    <><i className="fa-solid fa-trash-can"></i> DELETE</>
                 )}
             </button>
 
@@ -114,28 +114,30 @@ export const DetailedRecipe = (props) => {
         <div className="wrapper" >
             <div className="full-recipe">
                 <div className="close-details">
+                    <span className="header-span"></span>
+                    <h3 className="title">{props.title}</h3>
                     <button className="btn-close-tab" onClick={props.clickMethod} ><i className="fa-solid fa-xmark"></i></button>
                 </div>
-                <div >
-                    <h3 className="title">{props.title}</h3>
-                </div>
-                <h3>Ingredients:</h3>
-                <div className="ingredient-span-container">
-                    {props.ingredients.map((ingredient) => {
-                        return <span className="ingredient-span">{ingredient}</span>
-                    })}
-                </div>
-                <div className="procedure-cont">
-                    <h3>Procedure</h3>
-                    <ul>
-                        {procedureArray.map((step, index) => {
-                            return <li>{step}</li>
+                <div className="recipe-jargon">
+                    <h3>Ingredients:</h3>
+                    <div className="ingredient-span-container">
+                        {props.ingredients.map((ingredient) => {
+                            return <span className="ingredient-span">{ingredient}</span>
                         })}
-                    </ul>
+                    </div>
+                    <div className="procedure-cont">
+                        <h3>Procedure</h3>
+                        <ul>
+                            {procedureArray.map((step, index) => {
+                                return <li>{step}</li>
+                            })}
+                        </ul>
+                    </div>
+                    <div className="owner">
+                        <p>by {props.author}</p>
+                    </div>
                 </div>
-                <div className="owner">
-                    <p>by {props.author}</p>
-                </div>
+
             </div>
         </div>
 

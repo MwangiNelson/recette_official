@@ -23,14 +23,25 @@ const AllRecipes = () => {
     })
   }, [])
 
+  const RecipesDisplay = () => {
+    return (
+      <div className="recipes-body-section">
+
+        <div className="all-recipes-container">
+          <div className="recipe-cards-container">
+            {(filteredItems.length == 0) ? <NoItemFound /> : filteredItems.map((item, index) => { return (<RecipeCards key={index} title={item.title} author={item.author} id={item.id} preferences={item.preferences} clickMethod={() => { setSelectedRecipes(item) }} />) })}
+          </div>
+        </div>
+      </div>
+
+    )
+  }
+
 
   return (
     <section className="all-recipes">
-      {(!(selectedRecipes.length === 0)) ? <DetailedRecipe procedure={selectedRecipes.procedure} title={selectedRecipes.title} author={selectedRecipes.author} ingredients={selectedRecipes.ingredients} clickMethod={() => { setSelectedRecipes([]) }} /> : null}
-      <div className="filter">
-
-      </div>
-      <div className={((selectedRecipes.length === 0)) ? "recipes-body-section" : "invisible"}>
+      <div className="filter"></div>
+      <div className="recipes-display">
         <div className="search-bar-container">
           <div className="search-bar">
             <input type="search" value={queryText} className='input-field' onChange={(e) => { setQuery(e.target.value) }} />
@@ -40,12 +51,9 @@ const AllRecipes = () => {
             <button className="btn btn-add">FILTER <i className="fa-solid fa-filter"></i></button>
           </div>
         </div>
-        <div className="all-recipes-container">
-          <div className="recipe-cards-container">
-            {(filteredItems.length == 0) ? <NoItemFound /> : filteredItems.map((item, index) => { return (<RecipeCards key={index} title={item.title} author={item.author} id={item.id} preferences={item.preferences} clickMethod={() => { setSelectedRecipes(item) }} />) })}
-          </div>
-        </div>
+        {(!(selectedRecipes.length === 0)) ? <DetailedRecipe procedure={selectedRecipes.procedure} title={selectedRecipes.title} author={selectedRecipes.author} ingredients={selectedRecipes.ingredients} clickMethod={() => { setSelectedRecipes([]) }} /> : <RecipesDisplay />}
       </div>
+
     </section>
   )
 }
