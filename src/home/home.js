@@ -10,16 +10,7 @@ import "./home.css";
 
 function Home() {
   function notify() {
-    toast.info("Welcome to RECETTE, explore recipes", {
-      position: "top-center",
-      autoClose: 4999,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
+    
     return;
   }
 
