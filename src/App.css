@@ -24,7 +24,7 @@
     -3px 3px 0px 0px var(--primary-dark-blue),
     -4px 4px 0px 0px var(--primary-dark-blue),
     -5px 5px 0px 0px var(--primary-dark-blue);
-
+  --primary-bs-outline: 0 0 0 0.25rem rgb(13 110 253 / 25%);
   --primary-spacer: 1rem;
 }
 
@@ -39,7 +39,7 @@
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--primary-grey);
+  background-color: var(--primary-dark-blue);
   border-radius: 20px;
 }
 

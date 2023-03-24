@@ -16,7 +16,7 @@ export const LoginForm = (props) => {
             <div className="login-form-container" onClick={(e) => { e.stopPropagation() }} >
                 <div className="form-head">
                     <h1>SIGN IN</h1>
-                    <button className="btn-close-tab" onClick={props.visibility} ><i className="fa-solid fa-xmark"></i></button>
+                    <button className="btn-close-tab btn-dark" onClick={props.visibility} ><i className="fa-solid fa-xmark"></i></button>
                 </div>
                 <div className="form-wrapper">
                     <form onSubmit={(e) => { handleSubmit(e) }} className="login-form">

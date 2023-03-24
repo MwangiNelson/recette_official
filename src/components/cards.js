@@ -110,21 +110,56 @@ export const NoItemFound = () => {
 
 export const DetailedRecipe = (props) => {
     let procedureArray = props.procedure.split(".")
+
+    let [isVisible, setVisible] = useState(true)
+
+    let IngredientsList = () => {
+        return (
+            <div className="ingredient-span-container">
+                <ul>
+                    {props.ingredients.map((ingredient) => {
+                        return <li>{ingredient}</li>
+                    })}
+                </ul>
+                {/* <hr style={{ width: "100%", marginTop: "0.75em" }}></hr> */}
+            </div>
+        )
+    }
     return (
-        <div className="wrapper" >
+        <div className="wrapper">
             <div className="full-recipe">
                 <div className="close-details">
-                    <span className="header-span"></span>
-                    <h3 className="title">{props.title}</h3>
-                    <button className="btn-close-tab" onClick={props.clickMethod} ><i className="fa-solid fa-xmark"></i></button>
+                    <div className="recipe-head">
+                        <span className="recipe"> <h3 className="title">{props.title}</h3> <p>-by {props.author}</p></span>
+                        <div className="recipe-options">
+                            <button className="icon-button"><i className="fa-solid fa-bookmark"></i></button>
+                            <button className="icon-button"><i className="fa-solid fa-star"></i></button>
+                            <button className="icon-button"><i className="fa-solid fa-circle-info"></i></button>
+                        </div>
+                        <div className="recipe-metadata">
+                            <span>
+                                <i className="fa-solid fa-clock"></i>
+                                45min
+                            </span>
+                            <span>
+                                <i className="fa-solid fa-utensils"></i>
+                                2people
+                            </span>
+                        </div>
+                    </div>
+
+                    <button className="btn-close-tab btn-light" onClick={props.clickMethod} ><i className="fa-solid fa-xmark"></i></button>
                 </div>
                 <div className="recipe-jargon">
-                    <h3>Ingredients:</h3>
-                    <div className="ingredient-span-container">
-                        {props.ingredients.map((ingredient) => {
-                            return <span className="ingredient-span">{ingredient}</span>
-                        })}
+                    <div className="ingredients-section">
+                        <div className="ingreds-header">
+                            <h3>Ingredients</h3>
+                            <button className="icon-button btn-toggle-ingredients" onClick={() => { setVisible(!isVisible) }}><i className={(isVisible) ? "fa-solid fa-angle-up" : "fa-solid fa-angle-down"}></i></button>
+                        </div>
+                        {(isVisible) ? <IngredientsList /> : null}
+
                     </div>
+
                     <div className="procedure-cont">
                         <h3>Procedure</h3>
                         <ul>
@@ -132,10 +167,9 @@ export const DetailedRecipe = (props) => {
                                 return <li>{step}</li>
                             })}
                         </ul>
+
                     </div>
-                    <div className="owner">
-                        <p>by {props.author}</p>
-                    </div>
+
                 </div>
 
             </div>
